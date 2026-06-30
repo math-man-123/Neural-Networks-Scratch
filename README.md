@@ -15,3 +15,6 @@ and input-output pairs $(x,t) \sim P_\text{data}$ the problem is to find weights
 $$\min_\vartheta \underset{{P_\text{data}}}{\mathbb{E}} \Big[\mathcal{L}(f(x;\vartheta),t)\Big]$$
 
 where $\vartheta := \Big\\{W^{(k)},b^{(k)}|k\in[n]\Big\\}$ and $\mathcal{L}$ is a loss function. This can be solved using stochastic gradient descent. Please refer to the write-up on my website if you want to learn more.
+
+# Features
+Lets you define and train your own multilayer perceptron with any topology. Allows for any activation / loss function you want. Allows for any SGD optimizer you want (default: AdamW). Allows for any learning schedule with or without warmup. Trains using backpropagation and automatically logs accuracy.
