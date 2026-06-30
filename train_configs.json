@@ -1,0 +1,85 @@
+{
+    "network_config": {
+        "name": "mnist-500-250-100",
+        "layer_sizes": [784, 500, 250, 100, 10]
+    },
+
+    "activation_config": {
+        "name": "sigmoid",
+        "T": 1.0
+    },
+
+    "initializer_config": {
+        "weight_config": {
+            "name": "normal",
+            "mu": 0.0,
+            "sigma": 0.045
+        },
+        "bias_config": {
+            "name": "uniform",
+            "low": -0.08,
+            "high": 0.08
+        }
+    },
+
+    "data_config": {
+        "loader_config": {
+            "name": "mnist_csv",
+            "in_low": -0.5,
+            "in_high": 0.5,
+            "out_low": 0.01,
+            "out_high": 0.99
+        },
+        "train_data_path": "data/mnist_train.csv",
+        "test_data_path": "data/mnist_test.csv"
+    },
+
+    "augment_config": {
+        "name": "affine2D",
+        "img_shape": [28, 28],
+        "min_val": -0.5,
+        "max_val": 0.5,
+        "standard_factor": 2.58,
+        "augment_factor": 1.35,
+        "max_rotate": 30.0,
+        "max_shear": 0.7,
+        "max_scale": 0.4,
+        "max_trans": 5.0
+    },
+
+    "learning_config": {
+        "schedule_config": {
+            "low": 1e-3,
+            "high": 8e-1,
+            "frac": 0.05
+        },
+        "warmup_config": {
+            "name": "linear_warmup"
+        },
+        "decay_config": {
+            "name": "cosine_decay",
+            "pow": 1.0
+        }
+    },
+
+    "loss_config": {
+        "name": "least_squares"
+    },
+
+    "optimizer_config": {
+        "name": "adamw",
+        "alpha": 0.001,
+        "epsilon": 1e-8,
+        "beta0": 0.9,
+        "beta1": 0.999,
+        "phi": 1e-6
+    },
+
+    "trainer_config": {
+        "batch_size": 5,
+        "max_batch": 60000,
+        "test_after": 100,
+        "max_epoch": 25,
+        "augment_num": 4
+    }
+}
